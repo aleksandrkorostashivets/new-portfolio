@@ -1,0 +1,210 @@
+.counter {
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    flex: 0 1 30%;
+    text-align: center;
+    @include adaptiv-value("margin-top", 30, 15, 0);
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    &-title {
+      @include adaptiv-font(36, 20);
+    }
+  }
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    svg {
+      margin-right: 10px;
+      width: 40px;
+      height: 40px;
+      fill: #fff;
+      transition: all 0.4s ease-in;
+    }
+
+    span {
+      transition: all 0.3s ease-in;
+    }
+
+    &:not(:first-child) {
+      &:hover {
+        svg {
+          fill: $secondary-color;
+          animation: rotateSvg 0.5s ease-in forwards;
+        }
+
+        span {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  &__btn {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    padding: 5px 10px;
+    width: 220px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      z-index: -1;
+      border-radius: 28px;
+      width: 60px;
+      height: 60px;
+      background-color: $secondary-color;
+      transition: all 0.2s ease-in;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.benefits {
+  position: relative;
+
+  &__list {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+  }
+
+  &__item {
+    position: relative;
+    margin: 20px;
+    width: 30%;
+    text-align: center;
+
+    &-number {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1;
+      font-weight: 900;
+      line-height: 1;
+      color: $secondary-color;
+      opacity: 0.4;
+      transform: rotate(45deg);
+      @include adaptiv-font (150, 70);
+    }
+
+    &-title {
+      font-weight: 900;
+      @include adaptiv-font (34, 20);
+    }
+
+    &-text {
+      line-height: 1.5;
+      @include adaptiv-font (20, 16);
+    }
+
+    &:nth-child(2),
+    &:nth-child(5) {
+      margin-top: 15vh;
+    }
+  }
+}
+
+.stages {
+  position: relative;
+
+  &__number {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    font-weight: 900;
+    color: transparent;
+    background-image: url("../img/text-bg.jpeg");
+    -webkit-background-clip: text;
+    opacity: 0.6;
+    animation: textAnimate 20s infinite ease-in-out;
+    @include adaptiv-font(350, 100);
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+  }
+
+  &__item {
+    margin: 20px;
+    width: 30%;
+
+    &-title {
+      height: 100px;
+      line-height: 1.4;
+      text-align: center;
+      color: $secondary-color;
+      @include adaptiv-font(30, 24);
+    }
+
+    &-text {
+      font-weight: 300;
+      line-height: 1.2;
+      text-align: center;
+      @include adaptiv-font(20, 16);
+    }
+
+    &:nth-child(1),
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(6) {
+      margin-top: 10vh;
+    }
+  }
+}
+
+@keyframes rotateSvg {
+  25% {
+    transform: rotate(20deg);
+  }
+
+  50% {
+    transform: rotate(0);
+  }
+
+  75% {
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes textAnimate {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 100%;
+  }
+}
